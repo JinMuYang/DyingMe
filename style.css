@@ -1,0 +1,68 @@
+:root {
+    --cells-per-row: 48;
+    --cell-size: 12px;
+}
+
+body {
+    margin: 0 30px;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#graph {
+    display: grid;
+    grid-template-columns: repeat(var(--cells-per-row), var(--cell-size));
+    gap: 3px;
+}
+
+.cell {
+    display: inline-block;
+    width: var(--cell-size);
+    aspect-ratio: 1;
+    border-radius: 2px;
+    position: relative;
+}
+
+.cell:hover,
+.cell:focus {
+    outline: 1px solid #333;
+    filter: brightness(1.5);
+    /* box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.2); */
+}
+
+.lived-expected {
+    background-color: dimgrey;
+}
+
+.unlived-expected {
+    background-color: green;
+}
+
+.lived-unexpected {
+    background-color: yellow;
+}
+
+@media (max-width: 900px) {
+    :root {
+        --cells-per-row: 36;
+        /* Fewer cells on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --cells-per-row: 24;
+        /* Even fewer cells on mobile devices */
+    }
+}
